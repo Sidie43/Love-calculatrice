@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculatrice</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    
+* {
+padding: 0;
+margin: 0;
+font-size: 16px;
+font-family: sans-serif;
+}
+
+body {
+background-color: #e3effa;
+}
+
+.container {
+background-color: #ffffff;
+box-shadow: 3px 3px 3px 3px #09090936;
+border-radius: .625rem;
+max-width: 25rem;
+margin: 120px auto;
+margin-bottom: 0;
+height: 31.875rem;
+box-sizing: border-box;
+}
+
+.container h1 {
+font-size: 1.5rem;
+padding: .625rem;
+text-align: center;
+box-sizing: border-box;
+color: rgba(0, 0, 0, 0.477);
+}
+
+.screen {
+height: 3.4375rem ;
+width: 95%;
+margin: .625rem auto;
+box-sizing: border-box;
+}
+
+.screen #operand1 {
+width: 100%;
+height: 100%;
+font-size: 1.625rem;
+padding: .625rem;
+box-sizing: border-box;
+border-radius: .3125rem;
+border: 1px solid rgba(255, 255, 255, 0.256);
+background-color: #f5f5f300;
+color: black;
+display: block;
+box-shadow: 0px 0px 3cap 2px #ff068736;
+}
+
+.keyboard {
+border: 1px solid rgba(255, 252, 252, 0.256);
+width: 95%;
+margin: 5.625rem auto 0 auto;
+height: 18.75rem;
+display: flex;
+box-sizing: border-box;
+}
+
+.key-container {
+border: 1px solid rgba(255, 252, 252, 0.256);
+flex: 2;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+box-sizing: border-box;
+border: 1px solid rgba(247, 6, 159, 0.16);
+border-right: none;
+border-radius: 10px 0 0 10px;
+}
+
+.key-container2 {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+box-sizing: border-box;
+border: 1px solid rgba(247, 6, 159, 0.16);
+border-radius: 0 10px 10px 0;
+}
+
+.key {
+width: 2.8125rem;
+height: 2.8125rem;
+padding: 0.9375rem;
+margin: 0.9375rem;
+box-sizing: border-box;
+background-color: rgb(255, 0, 170);
+color: #fff;
+border-radius: 10px;
+border: 0;
+box-shadow: 2px 2px 2px 2px #09090936;
+}
+
+.key:hover,
+.key:active,
+.key2:hover,
+.key2:active {
+  background-color: #ea079e;
+}
+
+.key2 {
+width: 100%;
+height: 2.5rem;
+font-size: 1.5rem;
+box-sizing: border-box;
+background-color: rgb(255, 0, 170);
+color: #fff;
+border-radius: 10px;
+border: 0;
+box-shadow: 2px 2px 2px 2px #09090936;
+}
+
+.key2:last-child {
+height: 3.75rem;
+box-sizing: border-box;
+}
+
+.module-container {
+text-align: center;
+background-color: #0000005a;
+width: 100%;
+height: 844px;
+position: absolute;
+top: 0;
+display: block;
+}
+
+.module, 
+.module1,
+.module2,
+.module3,
+.module4 {
+background-color: #ffffff;
+max-width: 500px;
+margin:  150px auto;
+padding: 1% 5% 8% 5%; 
+border-radius: 15px;
+}
+
+.module h2, .module2 h2, .module3 h2, .module4 h2 {
+font-size: 23px;
+margin: 0;
+padding: 15px 0;
+width: 100%;
+margin: auto;
+}
+
+.module h2 {
+padding-bottom: 0;
+margin-bottom: 10px;
+}
+
+.module span {
+animation: rotation-gauche 2s linear infinite;
+display: inline-block;
+color: rgb(255, 0, 170);
+}
+
+@keyframes rotation-gauche {
+from {
+transform: rotatey(0deg);
+}
+to {
+transform: rotatey(360deg);
+}
+}
+
+.module h3 {
+margin-top: 0;
+margin: 5px 0;
+margin-bottom: 50px;
+font-size: 18px;
+}
+
+.module a {
+text-decoration: none;
+margin-right: 15px;
+padding: 13px 20px;
+background-color: #ff00aa;
+border-radius: 13px;
+color: #fff;
+}
+
+.module a:first-child, .module a:last-child {
+padding: 13px 30px;
+}
+
+.module a:last-child {
+margin-right: 0;
+}
+
+.module a:hover  {
+background-color: #ea079e;
+transition: background-color .2s ease-in-out;
+}
+
+.module a:active {
+background-color: #ea079e;
+transition: background-color .2s ease-in-out;
+font-size: 15px;
+}
+
+.module2, .module3, .module4 {
+position: relative;
+padding: 1% 5% 5% 5%;
+}
+
+.module2 {
+display: none;
+}
+
+.module2 h2, .module3 h2, .module4 h2 {
+margin-bottom: 20px;
+}
+
+
+.module2 span, .module3 span, .module4 span {
+font-size: 70px;
+display: inline-block;
+animation: battement 0.8s infinite;
+}
+
+@keyframes battement {
+
+0% {
+transform: scale(1);
+}
+100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.5);
+}
+}
+
+.module2 div {
+margin-top: 70px;
+font-size: 26px;
+font-family: fantasy;
+color: #ff00aa;
+}
+
+
+
+.module3{
+display: none;
+}
+
+
+.module4 h2 {
+font-size: 23px;
+}
+
+.module4 div {
+margin-top: 70px;
+font-size: 26px;
+font-family: fantasy;
+color: #ff00aa;
+}
+
+.module4 {
+display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+.container {
+max-width: 98%;
+margin: 160px auto;
+}
+
+.key {
+width: 2.8125rem;
+height: 2.8125rem;
+padding: .625rem;
+margin: .625rem;
+box-sizing: border-box;
+}
+
+.module {
+padding: 1% 5% 10% 5%;
+}
+
+.module, 
+.module1,
+.module2,
+.module3,
+.module4 {
+background-color: #ffffff;
+max-width: 500px;
+margin:  210px auto;
+padding: 1% 5% 10% 5%; 
+border-radius: 15px;
+}
+
+.module h2 {
+font-size: 20px;
+}
+
+.module4 h2 {
+font-size: 17.5px;
+}
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculatrice Teckma</h1>
+    <div class="screen">
+      <input type="text" id="operand1">
+    </div>
+    <div class="keyboard">
+      <div class="key-container">
+        <button class="key" onclick="addCharacter('1')">1</button>
+        <button class="key" onclick="addCharacter('2')">2</button>
+        <button class="key" onclick="addCharacter('3')">3</button>
+        <button class="key" onclick="addCharacter('4')">4</button>
+        <button class="key" onclick="addCharacter('5')">5</button>
+        <button class="key" onclick="addCharacter('6')">6</button>
+        <button class="key" onclick="addCharacter('7')">7</button>
+        <button class="key" onclick="addCharacter('8')">8</button>
+        <button class="key" onclick="addCharacter('9')">9</button>
+        <button class="key" onclick="addCharacter('.')">.</button>
+        <button class="key" onclick="addCharacter('0')">0</button>
+        <button class="key" id="delete">dlt</button>
+      </div>
+
+      <div class="key-container2">
+        <button class="key2" onclick="addCharacter('+')"><i class="fas fa-plus"></i>
+        </button>
+
+        <button class="key2" onclick=" addCharacter('-')"><i class="fas fa-minus"></i>
+        </button>
+
+        <button class="key2" onclick="addCharacter('*')"><i class="fas fa-times"></i>
+        </button>
+
+        <button class="key2" onclick="addCharacter('/')"><i class="fas fa-divide"></i>
+        </button>
+
+        <button class="key2" onclick="calculer()">=</button>
+      </div>
+    </div>
+  </div>
+ <div id="module-cn" class="module-container">
+  <div id="module1" class="module">
+    <h2>
+      <i class="fas fa-heart" style="color: pink;">
+      </i>
+      Je t'aime tellement mon bb AWA 
+      <i class="fas fa-heart" style="color: pink;">
+      </i>
+    </h2>
+    <span>
+      <svg width="200" height="100" viewBox="0 0 24 24" fill="#ff00aa" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="5" fill="white">A</text>
+      </svg>      
+    </span>
+    <h3>Dit-moi, est ce que tu m'aime de la manière je t'aime ?</h3>
+    <div>
+      <a id="ouvreM2" href="#">Oui</a>
+      <a id="ouvreM3" href="#">Un peu</a>
+      <a id="ouvreM4" href="#">Non</a>
+    </div>
+  </div>
+
+  <div id="module2" class="module2">
+    <h2> 
+      <i class="fas fa-heart" style="color: pink;">
+      </i>
+    Héé je t'aime tellement  
+    <i class="fas fa-heart" style="color: pink;">
+    </i>
+  </h2>
+    <span>😍</span>
+    <div id="compteur">10</div>
+  </div>
+
+  <div  id="module3" class="module3">
+    <h2>😡Je suis faché😡</h2>
+    <span>😡</span>
+  </div>
+
+  <div  id="module4" class="module4">
+    <h2>😭Héé pétite fille là ma donner Goumin😭</h2>
+    <span>💔</span>
+    <div id="compteur2">10</div>
+  </div>
+ </div> 
+  
+
+<script>
+  const operand1 = document.getElementById('operand1');
+const deleter = document.getElementById ('delete');
+ // compteur
+ let compteur = 10;
+
+//ajouter des charatère à l'input 1
+const addCharacter = (character) => {
+  operand1.value += character;
+}
+
+const deleteInput = () => { 
+  if (operand1.value.length > 0) {
+    operand1.value = operand1.value.slice(0,-1);
+  };
+}
+
+const deleteInput2 = () => { 
+  if (operand1.value.length > 0) {
+    operand1.value = operand1.value.slice(0,-100);
+  };
+}
+
+deleter.addEventListener('click', deleteInput);
+deleter.addEventListener('dblclick', deleteInput2);
+
+//Empêcher la saisie de caractère non autorisés
+operand1.addEventListener('input', () => {
+  const validCharacter = /^[0-9+\-*/ ]*$/;
+
+  //si l'entrée ne correcpond pas, on la corrige
+  if (!validCharacter.test(operand1.value)) {
+    operand1.value = operand1.value.replace(/[^0-9+\-*/. ]/g, '');
+  }
+})
+
+//Empêcher les opérateurs consécutifs
+const invalidOperatorSequence = /[+\-*]{2,}/;
+if (invalidOperatorSequence.test(operand1.value)) {
+  operand1.value = operand1.value.slice(0, -1);
+}
+
+
+// Ogjet calculatrice
+let calculatrice = {
+  addition: function(a, b) {
+    return a + b;
+  },
+  soustraction: function(a,b) {
+    return a - b;
+  },
+  multiplication: function(a,b) {
+    return a * b;
+  },
+  division: function(a,b) {
+    if (b === null || b === 0) {
+      return a + '';
+      
+    } else {
+      return a / b;
+    }  
+  },
+};
+
+
+const calculer = () => {
+  const inputCalcul = operand1.value;
+
+  //On extrait tous les nombres et opérateurs de l'expression
+  const tokens = inputCalcul.match(/(\d+(\.\d+)?|\+|\-|\*|\/)/g);
+
+  if (!tokens) {
+    return "Expression invalide";
+  }
+
+  //On commence avec le premier nombre
+  let resultat = parseFloat(tokens[0]);
+
+  for (let i = 1; i < tokens.length; i += 2) {
+    const operateur = tokens [i];
+    const nextNumber = parseFloat(tokens[i + 1]);
+  
+
+      //sélection de la méthode appropriée en fonction de l'opérateur
+  switch (operateur) {
+    case '+':
+      resultat = calculatrice.addition(resultat,  nextNumber);
+      break;
+    case '-':
+      resultat = calculatrice.soustraction(resultat, nextNumber);
+      break;
+    case '*':
+      resultat = calculatrice.multiplication(resultat, nextNumber);
+      break;
+    case '/': 
+    resultat = calculatrice.division(resultat, nextNumber);
+      break;
+    default: 
+    alert('ERREUR');
+  }
+}
+operand1.value = `= ${resultat}`;
+};
+
+const moduleCN = document.getElementById('module-cn');
+const module1 = document.getElementById('module1');
+const module2 = document.getElementById('module2');
+const module3 = document.getElementById('module3');
+const module4 = document.getElementById('module4');
+
+const ouvreM2 = document.getElementById('ouvreM2');
+const ouvreM3 = document.getElementById('ouvreM3');
+const ouvreM4 = document.getElementById('ouvreM4');
+
+ouvreM2.addEventListener('click', () => {
+  module2.style.display = 'block';
+  module1.style.display = 'none';
+
+    //Fonction pour décrémenter le compteur
+function decrementer() {
+  if (compteur > 0) {
+    compteur--;
+    document.getElementById('compteur').textContent = compteur;
+    document.getElementById('compteur2').textContent = compteur;
+  } else {
+    clearInterval(interval);
+    moduleCN.style.display = 'none';
+  }
+}
+
+// Décrémenter automatiquement toutes les secondes
+let interval = setInterval(decrementer, 1000);
+
+});
+
+ouvreM3.addEventListener('click', () => {
+  module3.style.display = 'block';
+  module1.style.display = 'none';
+  alert(`j'ai toujours sûr que tu m'aime pas ho, mechante fille. Je vais dire à ma Maman`);
+});
+
+ouvreM4.addEventListener('click', () => {
+  module4.style.display = 'block';
+  module1.style.display = 'none';
+
+  //Fonction pour décrémenter le compteur
+function decrementer() {
+  if (compteur > 0) {
+    compteur--;
+    document.getElementById('compteur').textContent = compteur;
+    document.getElementById('compteur2').textContent = compteur;
+  } else {
+    clearInterval(interval);
+    moduleCN.style.display = 'none';
+  }
+}
+
+// Décrémenter automatiquement toutes les secondes
+let interval = setInterval(decrementer, 1000);
+
+});
+</script>
+</body>
+</html>
